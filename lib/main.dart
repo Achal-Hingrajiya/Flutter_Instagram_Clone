@@ -23,12 +23,128 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
-  Widget _build_posts() {
+  Widget _buildPostWidget() {
     return Container(
-      height: 400.0,
-      color: Colors.pink,
+      height: 600.0,
+      color: Colors.white,
       margin: EdgeInsets.fromLTRB(0, 2, 0, 2),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: 10.0, right: 15.0),
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    "https://picsum.photos/60/60",
+                  ),
+                ),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "googleindia",
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                  ),
+                  Text(
+                    "Sponsored",
+                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w300),
+                  ),
+                ],
+              ),
+              Expanded(
+                child: Container(),
+              ),
+              IconButton(onPressed: () {}, icon: Icon(Icons.more_vert_outlined))
+            ],
+          ),
+          Container(
+            height: 400.0,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage("https://picsum.photos/600/400"),
+                fit: BoxFit.cover,
+              ),
+              shape: BoxShape.rectangle,
+            ),
+          ),
+          Row(
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.favorite_outline_rounded,
+                ),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.comment,
+                ),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.send_sharp,
+                ),
+              ),
+              Expanded(
+                child: Container(),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.bookmark_outline_rounded,
+                ),
+              )
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: 15.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 7.0),
+                      child: Text(
+                        "3,426 likes",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      "We've gotchu\nGoogle is there to protect you from allkinds of bad actors\non the internet to keep you safe. #SaferWithGogle.",
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 5),
+                      child: Text(
+                        "View all 44 comments",
+                        style: TextStyle(
+                          color: Colors.black45,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
+  }
+
+  List<Widget> _generateRandomPosts() {
+    return List<Widget>.generate(10, (index) => _buildPostWidget());
   }
 
   @override
@@ -60,17 +176,20 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              height: 100.0,
-              color: Colors.black45,
+            Column(
+              children: [
+                Container(
+                  height: 100.0,
+                  color: Colors.black45,
+                ),
+                SizedBox(
+                  height: 2,
+                ),
+              ],
             ),
-            SizedBox(
-              height: 2,
-            ),
-            _build_posts(),
-            _build_posts(),
-            _build_posts(),
-            _build_posts(),
+            Column(
+              children: _generateRandomPosts(),
+            )
           ],
         ),
       ),
