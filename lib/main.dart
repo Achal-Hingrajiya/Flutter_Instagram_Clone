@@ -30,43 +30,49 @@ class HomePage extends StatelessWidget {
       margin: EdgeInsets.fromLTRB(0, 2, 0, 2),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(left: 10.0, right: 15.0),
-                child: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    "https://picsum.photos/60/60",
+          Padding(
+            padding: EdgeInsets.only(bottom: 5.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: 10.0, right: 15.0),
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(
+                      "https://picsum.photos/60/60",
+                    ),
                   ),
                 ),
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "googleindia",
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-                  ),
-                  Text(
-                    "Sponsored",
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w300),
-                  ),
-                ],
-              ),
-              Expanded(
-                child: Container(),
-              ),
-              IconButton(onPressed: () {}, icon: Icon(Icons.more_vert_outlined))
-            ],
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "googleindia",
+                      style:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                    ),
+                    Text(
+                      "Sponsored",
+                      style:
+                          TextStyle(fontSize: 10, fontWeight: FontWeight.w300),
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: Container(),
+                ),
+                IconButton(
+                    onPressed: () {}, icon: Icon(Icons.more_vert_outlined))
+              ],
+            ),
           ),
           Container(
             height: 400.0,
             width: double.infinity,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage("https://picsum.photos/600/400"),
+                image: NetworkImage("https://picsum.photos/1080/720"),
                 fit: BoxFit.cover,
               ),
               shape: BoxShape.rectangle,
@@ -147,6 +153,38 @@ class HomePage extends StatelessWidget {
     return List<Widget>.generate(10, (index) => _buildPostWidget());
   }
 
+  Widget _buildStoryWidget() {
+    return Padding(
+      padding: EdgeInsets.only(left: 2, right: 2),
+      child: Container(
+        child: Column(
+          children: [
+            CircleAvatar(
+              backgroundImage: NetworkImage(
+                "https://picsum.photos/70/70",
+              ),
+              radius: 35,
+            ),
+            SizedBox(
+              height: 3,
+            ),
+            Text(
+              "Add Story",
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w900,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  List<Widget> _generateRandomstories() {
+    return List.generate(20, (index) => _buildStoryWidget());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -179,8 +217,40 @@ class HomePage extends StatelessWidget {
             Column(
               children: [
                 Container(
-                  height: 100.0,
-                  color: Colors.black45,
+                  height: 120.0,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(
+                            top: 10, left: 10, bottom: 8, right: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Stories",
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w800,
+                              ),
+                            ),
+                            Text(
+                              "Watch All",
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w800,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: _generateRandomstories(),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: 2,
