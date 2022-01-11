@@ -3,5 +3,5 @@
 Instagram UI clone made with flutter.
 
 ## Home screen
-![AchalHingrajiyaInstagramUIClone](https://user-images.githubusercontent.com/67894945/148931193-9999680e-2bf3-48f0-9ef9-5ab6d4297dc3.png)
-![AchalHingrajiyaInstagramUICloneHomeScreen](https://user-images.githubusercontent.com/67894945/148931830-be770571-2d14-4475-9db9-597f27ea5c0a.png)
+![Screenshot_1641898652](https://user-images.githubusercontent.com/67894945/148932196-0e6972b2-0308-4bc5-9305-e8d3deabd844.png)
+![Screenshot_1641898661](https://user-images.githubusercontent.com/67894945/148932259-9520427b-d83e-4bdf-9776-f155e4ff14ba.png)
